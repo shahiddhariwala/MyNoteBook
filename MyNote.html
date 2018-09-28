@@ -1,0 +1,74 @@
+<html>
+<head>
+	<title>MyNoteBook</title>
+	<script type="text/javascript">
+		function getNotes()
+		{
+			if(localStorage.getItem('note'))
+				var note = localStorage.getItem('note');
+			else
+				var note = "Edit this text to save notes in local storage";
+
+			document.getElementById("note").innerHTML= note;
+		}
+		function saveNotes()
+		{
+			var note = document.getElementById("note").innerHTML;
+			localStorage.setItem('note',note);
+		}
+		function clearNotes()
+		{
+			clear : localStorage.clear();
+			return false;
+		}
+	</script>
+	<style type="text/css">
+		body
+		{
+			font-family: tahoma;
+			line-height: 1.6em;
+			background-color: #d3d3d3;
+		}
+		header
+		{
+			margin: 20px auto;
+			text-align: center;
+		}
+		footer
+		{
+			text-align: center;
+		}
+		#container
+		{
+			background-color: #ffffa5;
+			width: 700px;
+			overflow: hidden;
+			margin : 50px auto;
+			padding: 30px;
+		}
+		#but1
+		{
+			text-decoration: none;
+			color:white;
+			background-color: black;
+			padding:10px;
+		}
+	</style>
+</head>
+<body>
+	<header><h1>MyNote</h1></header>
+	<section id="container">
+		<div id="note" contenteditable="true" onkeypress="saveNotes()"></div>
+	</section>
+	
+	<footer>
+		<div>
+			<a href="" id="but1" onclick="clearNotes()">Clear Note</a>
+		</div>
+	<p>Shahid's MyNote &copy; 2018 </p>
+	</footer>
+	<script type="text/javascript">
+		getNotes();
+	</script>
+</body>
+</html>
